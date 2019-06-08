@@ -46,7 +46,8 @@ user_ids = [
 - candidate_dict: 候補者の`id`, `name`, `twitter_page`, `description`, `my_page`を含む辞書型
 - `{ id: {name: 'hoge', twitter_page: 'hogehoge', description: 'fuga', my_page: 'fugafuga'}, ...}`
 
-＊＊＊
+***
+
 #### followers_common_part(api, *args) / return candidate_dict
 - A,B,C...さんに共通するフォロイーのリストを返す
 ##### 引数
