@@ -36,6 +36,17 @@ user_ids = [
 
 ***
 
+#### friends_common_part(api, *args) / return candidate_dict
+- A,B,C...さんに共通するフォロワーのリストを返す
+##### 引数
+- [必須]api: tweepy.API
+- [必須]*args： A, B, C…さんのTwitter ID(screen name)が入った可変長配列。少なくとも２つのIDが必要
+
+##### 戻り値
+- candidate_dict: 候補者の`id`, `name`, `twitter_page`, `description`, `my_page`を含む辞書型
+- `{ id: {name: 'hoge', twitter_page: 'hogehoge', description: 'fuga', my_page: 'fugafuga'}, ...}`
+
+＊＊＊
 #### followers_common_part(api, *args) / return candidate_dict
 - A,B,C...さんに共通するフォロイーのリストを返す
 ##### 引数
