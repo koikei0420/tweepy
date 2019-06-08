@@ -46,6 +46,7 @@ def lookup_users(self, user_ids=None, screen_names=None, include_entities=None):
 
 import tweepy
 import pandas as pd
+from google.colab import files
 
 def my_auth (consumer_key, consumer_secret, access_token, access_token_secret):
   auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -60,7 +61,6 @@ def friends_common_part(api, *args):
   common_set = set(api.friends_ids(args[0]))
   for i in range(1, len(args)):
     common_set = common_set & set(api.friends_ids(args[i]))
-  
   common_list = list(common_set)
   
   for i in range(0, len(common_list), 100):
@@ -105,7 +105,8 @@ access_token_secret = 'hogehoge'
 # 影響力のある人のID（複数人可能）
 user_ids = [
     'genya0407',
-    'EbiEbiEvidence',
+#     'EbiEbiEvidence', #ebiebi消えたっぽい
+    'ko_watanabe_tw',
     'alohat_jp'
 ]
 
@@ -117,8 +118,8 @@ candidate_friends = friends_common_part(
 
 """↓表の表示（API関係なし）"""
 
-candidate_friends_df = pd.DataFrame(candidate_friends)
-candidate_friends_df.T[['name','twitter_page','description','my_page']]
+candidate_friends_df = pd.DataFrame(candidate_friends).T[['name','twitter_page','description','my_page']]
+candidate_friends_df
 
 #上アカウントをフォローしている人の共通部分
 candidate_followers = followers_common_part(
@@ -126,10 +127,13 @@ candidate_followers = followers_common_part(
     *user_ids
 )
 
-candidate_followers_df = pd.DataFrame(candidate_followers)
-candidate_followers_df.T[['name','twitter_page','description','my_page']]
+candidate_followers_df = pd.DataFrame(candidate_followers).T[['name','twitter_page','description','my_page']]
+candidate_followers_df
 
 """↓ CSV書き出し"""
 
-#candidate_friends_df.to_csv("candidate_friends.csv")
-#candidate_followers_df.to_csv("candidate_followers.csv")
+candidate_friends_df.to_csv("candidate_friends.csv")
+files.download("candidate_friends.csv")
+
+candidate_followers_df.to_csv("candidate_followers.csv")
+files.download("candidate_followers.csv")
