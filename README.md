@@ -1,6 +1,6 @@
 # tweepy
 - A,B,Cさんが共にフォローしている人を自動でリストアップするツール
-- Tweepy.ipynb, tweet.pyともに同じコード
+- Tweepy.ipynb, tweepy.pyともに同じコード
 
 ## 使い方
 
